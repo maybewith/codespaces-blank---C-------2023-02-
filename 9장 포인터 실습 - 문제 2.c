@@ -1,18 +1,28 @@
-#include <stdio.h>
+#include <stdio.h>  
 
-int main() {
-    char str[21];
-    char *p;
+int main() { 
+    // 문자열을 저장할 char 배열과 포인터를 선언합니다.
+    char str[21];  
+    char *p; 
+
+    // 사용자로부터 문자열을 입력받습니다.
     scanf("%s", str);
-    p = str;
-    
-    while (*p != '#') p++;
-    p--;
+    p = str;  
 
+    // '#' 문자를 만날 때까지 p 포인터를 증가시킵니다.
+    while (*p != '#') p++;
+
+    // '#' 문자는 출력 대상이 아니므로 p를 하나 감소시킵니다.
+    p--;  
+
+    // p가 str의 주소보다 크거나 같을 때까지 문자를 역순으로 출력합니다.
     while (p >= str) {
+        // p 포인터가 가리키는 현재 문자를 출력을 하고 p 포인터를 하나 감소시킵니다.
         printf("%c", *p);
-        p--;
+        p--;  
     }
-    printf("\n");
-    return 0;
+    
+    // 프로그램을 종료합니다.
+    return 0;  
 }
+
