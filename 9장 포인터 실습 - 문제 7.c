@@ -11,8 +11,14 @@ void output(int *x, int *y, int *z) {
 }
 
 int main() {
+    // 필요한 변수 선언
     int x, y, z;
+
+    // 입력을 받는 함수
     input(&x, &y, &z);
+
+    // 출력을 하는 함수
     output(&x, &y, &z);
+    
     return 0;
 }
