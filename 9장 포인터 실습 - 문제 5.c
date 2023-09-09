@@ -5,7 +5,8 @@ int main() {
     int arr[5], rank[5];  
 
     // 정수 포인터 p와 q 선언
-    int *p, *q;  
+    int *p, *q, *m;  
+    m=rank;
 
     // 5개의 정수 입력
     for (p = arr; p < arr + 5; p++) {  
@@ -25,7 +26,7 @@ int main() {
             // p가 가리키는 점수가 q가 가리키는 점수보다 작을 경우
             if (*p < *q) {
                 // 해당 학생의 등수 증가  
-                rank[p - arr]++;  
+                *(m+p - arr)++;  
             }
         }
     }
