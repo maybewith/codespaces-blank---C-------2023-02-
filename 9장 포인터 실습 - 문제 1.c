@@ -15,10 +15,10 @@ int main() {
     scanf("%d %d %d", px, py, pz);
 
     // px, py, pz가 가리키는 값들을 교환
-    tmp = *px;
-    *px = *pz;
-    *pz = *py;
-    *py = tmp;
+    tmp = px;
+    px = pz;
+    pz = py;
+    py = tmp;
 
     // 순서가 바뀐 최종 값을 포인터를 이용하여 출력
     printf("%d %d %d\n", *px, *py, *pz);
