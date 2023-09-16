@@ -42,15 +42,27 @@ int input(int *p) {
     return count;
 }
 
+// 함수 원형: int *sel_next(int *p)
 int *sel_next(int *p, int *end) {
+    // 원소들의 합을 기억하는 변수
     int sum = 0;
+
+    // 원소들의 합이 10을 초과하기 바로 전 원소의 주소를 반환
     while (p < end) {
         sum += *p;
+
+        // 원소들의 합이 10을 초과할 때
         if (sum > 10) {
+            // 그 전의 주소를 반환을 시켜준다
             return p - 1;
         }
+
+        // 주소 증가 시킨다
         p++;
     }
+
+    // 원소들의 합이 10을 초과하지 않은 채 배열의 마지막에 도달하면, 배열
+    // 의 마지막 원소의 주소를 반환한다. 
     return p - 1;
 }
 
