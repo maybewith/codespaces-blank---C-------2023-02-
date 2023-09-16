@@ -1,12 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int compare_asc(const void *a, const void *b) {
-    return *(int *)a - *(int *)b;
+// 작은 수부터 큰 수까지 오름차순
+void ABCO(int *start, int length) {
+    // 필요한 변수들을 선언한다
+    int *p, *q, temp;
+
+    // 반복문을 통해서 앞으로 갈 숫자들을 앞으로 보낸다
+    for (p = start; p < start + length - 1; p++) {
+        for (q = p + 1; q < start + length; q++) {
+            // 조건문으로 비교를 하여 순서를 바꾼다
+            if (*p > *q) {
+                temp = *p;
+                *p = *q;
+                *q = temp;
+            }
+        }
+    }
 }
 
-int compare_desc(const void *a, const void *b) {
-    return *(int *)b - *(int *)a;
+// 큰 수부터 작은 수까지 내림차순
+void ABCE(int *start, int length) {
+    // 필요한 변수들을 선언한다
+    int *p, *q, temp;
+
+    // 반복문을 통해서 앞으로 갈 숫자들을 앞으로 보낸다
+    for (p = start; p < start + length - 1; p++) {
+        for (q = p + 1; q < start + length; q++) {
+            // 조건문으로 비교를 하여 순서를 바꾼다
+            if (*p < *q) {
+                temp = *p;
+                *p = *q;
+                *q = temp;
+            }
+        }
+    }
 }
 
 int main() {
@@ -38,13 +65,18 @@ int main() {
         }
     }
 
-    printf("%d\n", count); // 배열에 저장된 정수의 개수 출력
+    // 배열에 저장된 정수의 개수 출력
+    printf("%d\n", count); 
 
     // 배열 정렬
     if (count % 2 == 1) {
-        qsort(a, count, sizeof(int), compare_asc);
+        // 배열에 저장된 정수의 개수가 홀수이면, 배열에 저장된 정수를 작은 수부터 큰 수까지 오름차순으로
+        // 정렬하여 출력한다
+        ABCO(a, count);
     } else {
-        qsort(a, count, sizeof(int), compare_desc);
+        // 배열에 저장된 정수의 개수가 짝수이면, 배열에 저장된 정수를 큰 수부터 작은 수까지 내림차순으로
+        // 정렬하여 출력한다
+        ABCE(a, count);
     }
 
     // 정렬된 배열 출력
@@ -53,20 +85,25 @@ int main() {
     }
     printf("\n");
 
-    // 연속적인 홀수의 최대 횟수 계산
+    // 정렬된 배열에서 홀수가 연속해서 나오는 횟수를 세어서
+    // 이 중 최대 횟수를 출력한다.
     int max_consecutive_odd = 0;
     int current_consecutive_odd = 0;
     for (p = a; p < a + count; p++) {
+        // 홀수가 연속해서 나온다는 것을 센다
         if (*p % 2 == 1) {
             current_consecutive_odd++;
             if (current_consecutive_odd > max_consecutive_odd) {
                 max_consecutive_odd = current_consecutive_odd;
             }
         } else {
+            // 연속이 아니기에 초기화
             current_consecutive_odd = 0;
         }
     }
-    printf("%d\n", max_consecutive_odd); // 최대 횟수 출력
+
+    // 최대 횟수 출력
+    printf("%d\n", max_consecutive_odd); 
 
     return 0;
 }
