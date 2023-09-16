@@ -10,19 +10,30 @@ int compare_desc(const void *a, const void *b) {
 }
 
 int main() {
+    // 포인터를 통해서 배열을 훑어본다
     int a[100], *p;
+
+    // 입력을 받을 숫자의 개수와 양수의 개수를 저장하는 변수
     int N;
     int count = 0;
 
+    // N개의 정수를 입력받는다
     scanf("%d", &N);
 
+    // 0보다 큰 정수만 배열에 저장한다
     int m = 0;
     for (p = a; m < N; m++) {
+
+        // 입력을 받는다
         int tmp;
         scanf("%d", &tmp);
+
+        // 양수이면 입력을 받는다
         if (tmp > 0) {
             *p = tmp;
             p++;
+
+            // 저장된 개수를 센다
             count++;
         }
     }
