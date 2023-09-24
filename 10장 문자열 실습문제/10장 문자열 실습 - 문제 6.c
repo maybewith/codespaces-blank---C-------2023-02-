@@ -7,6 +7,7 @@ int main() {
     // 반전 여부를 추가로 입력 받은 후
     scanf("%s %s %d %d", str1, str2, &pos, &order);
 
+    // 문자열의 길이 측정
     int len1 = 0, len2 = 0;
     while (str1[len1]) len1++;
     while (str2[len2]) len2++;
